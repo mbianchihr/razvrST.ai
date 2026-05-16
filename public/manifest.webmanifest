@@ -1,0 +1,22 @@
+{
+  "id": "/",
+  "name": "razvrST.ai — skeniraj prije nego kupiš",
+  "short_name": "razvrST.ai",
+  "description": "Skeniraj proizvod, saznaj od čega je, kako se reciklira i u koji kontejner ide u Splitu.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#f4faf8",
+  "theme_color": "#0fb8a0",
+  "lang": "hr",
+  "dir": "ltr",
+  "categories": ["utilities", "lifestyle", "education"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

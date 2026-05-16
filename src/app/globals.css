@@ -1,0 +1,519 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────────────────────
+   razvrST.ai — "Lagoon" : Airbnb-flavored scanner app
+   Whitish surfaces · one signature turquoise-green · soft
+   floating cards that lift · friendly rounded geometry.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #f4faf8;
+  --surface: #ffffff;
+  --ink: #14241d;
+  --ink-soft: #6b7f77;
+  --line: #ebf1ee;
+
+  --mint: #0fb8a0; /* signature turquoise-green */
+  --mint-deep: #0a7d6e;
+  --mint-wash: #e4f7f2;
+
+  /* Airbnb-style elevation ramp */
+  --shadow-1: 0 1px 2px rgba(20, 36, 29, 0.05);
+  --shadow-2: 0 2px 4px rgba(20, 36, 29, 0.05),
+    0 10px 28px -16px rgba(20, 36, 29, 0.22);
+  --shadow-3: 0 4px 10px rgba(20, 36, 29, 0.06),
+    0 20px 44px -22px rgba(20, 36, 29, 0.34);
+
+  /* Score scale — modern status colors */
+  --s-A: #06a06a;
+  --s-B: #4cae4f;
+  --s-C: #e3a008;
+  --s-D: #e8730c;
+  --s-F: #df2f2f;
+
+  --seal-A: var(--s-A);
+  --seal-B: var(--s-B);
+  --seal-C: var(--s-C);
+  --seal-D: var(--s-D);
+  --seal-F: var(--s-F);
+
+  /* shadcn tokens → mint theme */
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--mint);
+  --primary-foreground: #ffffff;
+  --secondary: #eef3f0;
+  --secondary-foreground: var(--ink);
+  --muted: #eef3f0;
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--mint-wash);
+  --accent-foreground: var(--mint-deep);
+  --destructive: #df2f2f;
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--mint);
+  --chart-1: var(--s-A);
+  --chart-2: var(--s-B);
+  --chart-3: var(--s-C);
+  --chart-4: var(--s-D);
+  --chart-5: var(--s-F);
+  --radius: 1.05rem;
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--mint);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--mint-wash);
+  --sidebar-accent-foreground: var(--mint-deep);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--mint);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-mint: var(--mint);
+  --color-mint-deep: var(--mint-deep);
+  --color-mint-wash: var(--mint-wash);
+  /* legacy aliases so older class usage keeps compiling */
+  --color-paper: var(--surface);
+  --color-stone: var(--secondary);
+  --color-terra: var(--s-F);
+  --color-terra-deep: var(--s-F);
+  --color-olive: var(--mint);
+  --color-olive-bright: var(--s-B);
+  --color-gold: var(--s-C);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-display);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.55);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.3);
+  --radius-2xl: calc(var(--radius) * 1.7);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.006em;
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* ── Atoms ─────────────────────────────────────────────────── */
+.label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-feature-settings: "tnum" 1;
+}
+.rule {
+  border: none;
+  border-top: 1px solid var(--line);
+}
+.rule-dashed {
+  border: none;
+  border-top: 1px dashed var(--line);
+}
+
+/* Score chip — solid, modern, rounded */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Card surface — Airbnb soft white panels */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+.card-soft {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-2);
+}
+
+/* Airbnb hover-lift: cards rise toward the cursor */
+.lift {
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+@media (hover: hover) {
+  .lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-3);
+  }
+}
+.lift:active {
+  transform: translateY(-1px) scale(0.992);
+}
+
+/* Signature scan pill — the razvrST take on Airbnb's search bar */
+.scan-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 0.5rem 0.5rem 1.35rem;
+  box-shadow: var(--shadow-2);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) {
+  .scan-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-3);
+  }
+}
+.scan-pill:active {
+  transform: scale(0.985);
+}
+
+/* Horizontal category chip (Airbnb category rail) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-1);
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+@media (hover: hover) {
+  .chip:hover {
+    transform: translateY(-2px);
+    color: var(--ink);
+    border-color: color-mix(in srgb, var(--mint) 45%, var(--line));
+  }
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px -10px color-mix(in srgb, var(--mint) 75%, transparent);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.24s ease,
+    filter 0.2s ease;
+}
+@media (hover: hover) {
+  .btn-primary:hover {
+    filter: brightness(1.04);
+    box-shadow: 0 12px 28px -10px
+      color-mix(in srgb, var(--mint) 80%, transparent);
+  }
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+  border: none;
+}
+
+/* Bottom tab bar */
+.tabbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  z-index: 40;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+}
+.tabbar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  border-radius: 16px;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+.tabbar a[data-active="true"] {
+  color: var(--mint-deep);
+  background: var(--mint-wash);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 1s linear infinite; }
+
+/* Hero scan viewfinder */
+@keyframes scanline {
+  0% { top: 8%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 92%; opacity: 0; }
+}
+.scanline {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--mint), transparent);
+  box-shadow: 0 0 16px 2px color-mix(in srgb, var(--mint) 60%, transparent);
+  animation: scanline 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.floaty { animation: floaty 3.4s ease-in-out infinite; }
+
+/* Barcode viewfinder laser */
+@keyframes vfscan {
+  0% { top: 6%; }
+  50% { top: 94%; }
+  100% { top: 6%; }
+}
+.vf-line {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #34e0a1, transparent);
+  box-shadow: 0 0 14px 2px rgba(52, 224, 161, 0.7);
+  animation: vfscan 2.1s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes vfpulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.vf-corner { animation: vfpulse 1.6s ease-in-out infinite; }
+
+/* Pulsing recycling pin on the Split mini-map */
+.map-pin {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--mint);
+  box-shadow: 0 0 0 3px #fff, 0 2px 6px rgba(12, 31, 23, 0.35);
+  position: relative;
+}
+.map-pin::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid var(--mint);
+  animation: pinpulse 2s ease-out infinite;
+}
+@keyframes pinpulse {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes scanpulse {
+  0%, 100% { transform: scale(1.02); }
+  50% { transform: scale(1.08); }
+}
+.scan-pulse { animation: scanpulse 3s ease-in-out infinite; }
+@keyframes reticle {
+  0% { transform: scale(0.7); opacity: 0; }
+  40% { opacity: 0.9; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+.reticle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border: 2px solid var(--mint);
+  border-radius: 50%;
+  animation: reticle 2s ease-out infinite;
+}
+
+/* Scan-stage grid + reveal for user photo */
+.scan-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--mint) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--mint) 30%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.25;
+  mask-image: radial-gradient(circle at center, #000 35%, transparent 78%);
+}
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(14px, -12px) scale(1.08); }
+  66% { transform: translate(-12px, 8px) scale(0.96); }
+}
+.blob { animation: blob 9s ease-in-out infinite; filter: blur(34px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .spin { animation: none; opacity: 1; }
+}
+
+/* ── Time Capsule (decay timeline) ────────────────────────── */
+.capsule { position: relative; display: flex; flex-direction: column; }
+.capsule::before {
+  content: "";
+  position: absolute;
+  left: 19px; top: 8px; bottom: 46px;
+  width: 2px;
+  background: repeating-linear-gradient(var(--line) 0 6px, transparent 6px 12px);
+}
+.capsule-frame {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding-bottom: 1.15rem; opacity: 0;
+}
+.capsule-dot {
+  width: 40px; height: 40px; flex: none;
+  border-radius: 9999px; background: var(--surface);
+  border: 1.5px solid var(--line);
+  display: grid; place-items: center;
+  font-size: 1.15rem; z-index: 1;
+}
+.capsule-year {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.66rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.capsule-label {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem; line-height: 1.25; margin-top: 1px;
+  font-weight: 600;
+}
+.capsule-conc {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.1rem; line-height: 1.4; opacity: 0; font-weight: 600;
+}
+
+/* maplibre tweaks */
+.maplibregl-ctrl-attrib { font-size: 9px; }
+.maplibregl-map { border-radius: var(--radius); }
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply text-foreground; }
+}
